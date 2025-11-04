@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Video Call App - ES Module Version</title>
+    <link href="src/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <!-- Header -->
+    <header>
+        <h1>🎥 Video Call App</h1>
+        <div class="room-info">
+            <span id="roomIdDisplay">Room: -</span>
+            <span id="participantsCount">Participants: 0</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Join Section -->
+        <div class="section" id="joinSection">
+            <div class="join-box">
+                <h2>Tham gia phòng</h2>
+                <input
+                        id="roomIdInput"
+                        placeholder="Nhập Room ID (ví dụ: room123)"
+                        type="text"
+                        value="room123"
+                >
+                <input
+                        id="usernameInput"
+                        placeholder="Tên của bạn"
+                        type="text"
+                        value="User"
+                >
+                <button class="btn btn-primary" id="joinBtn">
+                    Tham gia phòng
+                </button>
+                <p class="info-text">
+                    💡 Mẹo: Chia sẻ Room ID với bạn bè để họ tham gia cùng phòng
+                </p>
+            </div>
+        </div>
+
+        <!-- Video Section -->
+        <div class="section" id="videoSection" style="display: none;">
+            <!-- Local Video -->
+            <div class="video-container">
+                <div class="video-wrapper local-video">
+                    <video autoplay id="localVideo" muted playsinline></video>
+                    <div class="video-label">
+                        <span id="localUsername">You</span>
+                        <span class="status-indicator">🔴</span>
+                    </div>
+                    <div class="video-controls">
+                        <button class="control-btn" id="toggleVideoBtn" title="Tắt/Bật camera">
+                            📹
+                        </button>
+                        <button class="control-btn" id="toggleAudioBtn" title="Tắt/Bật mic">
+                            🎤
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Remote Videos -->
+            <div class="video-container">
+                <div class="remote-videos" id="remoteVideos">
+                    <!-- Remote videos sẽ được thêm động -->
+                </div>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="filter-controls">
+                <h3>🎨 Video Filters</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="none">
+                        Không filter
+                    </button>
+                    <button class="filter-btn" data-filter="blackwhite">
+                        ⚫⚪ Đen trắng
+                    </button>
+                    <button class="filter-btn" data-filter="blur">
+                        🌫️ Làm mờ
+                    </button>
+                    <button class="filter-btn" data-filter="sepia">
+                        🟤 Sepia
+                    </button>
+                    <button class="filter-btn" data-filter="invert">
+                        🔄 Đảo màu
+                    </button>
+                    <button class="filter-btn" data-filter="brightness">
+                        ☀️ Sáng
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn-danger" id="leaveBtn">
+                    🚪 Rời phòng
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Hidden canvas for processing -->
+    <canvas id="processCanvas" style="display: none;"></canvas>
+
+    <!-- Status Messages -->
+    <div class="status-message" id="statusMessage"></div>
+</div>
+
+<!-- Scripts -->
+<script src="src/filters.js" type="module"></script>
+<script src="src/videoProcessor.js" type="module"></script>
+<script src="src/sfuClient.js" type="module"></script>
+<script src="src/main.js" type="module"></script>
+</body>
+</html>

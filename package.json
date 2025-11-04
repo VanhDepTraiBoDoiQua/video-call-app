@@ -1,0 +1,14 @@
+{
+  "name": "video-call-sfu",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cd server&&node server.js",
+    "client": "cd client&&npx vite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
